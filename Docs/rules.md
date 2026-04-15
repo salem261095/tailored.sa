@@ -1,0 +1,4 @@
+- dont use colors not in brand colors
+- use start and end for alignment not left and right
+- use tailwind css for styling
+- use unified border radius for all elements 2xl

@@ -1,0 +1,31 @@
+{
+  "brand": {
+    "name": "Tailored.sa",
+    "tagline": "Tailored Creative Agency",
+    "summary": "A Saudi creative agency shaping clearer brands, sharper digital presence, and more confident growth."
+  },
+  "navigation": [
+    { "label": "Home", "href": "/" },
+    { "label": "About", "href": "/about" },
+    { "label": "Blog", "href": "/blog" },
+    { "label": "Contact", "href": "/contact" }
+  ],
+  "footer": {
+    "note": "Built for brands that want strategy, writing, design, and digital presence to move in one clear direction.",
+    "contactLabel": "Start a conversation",
+    "navigationLabel": "Navigation",
+    "socialLabel": "Follow the studio",
+    "copyright": "Tailored.sa. Crafted in Saudi Arabia."
+  },
+  "socialLinks": [
+    { "label": "Instagram", "href": "#" },
+    { "label": "LinkedIn", "href": "#" },
+    { "label": "X", "href": "#" }
+  ],
+  "seo": {
+    "siteName": "Tailored.sa",
+    "defaultTitle": "Tailored.sa | Saudi Creative Agency",
+    "defaultDescription": "Tailored.sa is a Saudi creative agency focused on branding, content, marketing strategy, UX writing, and web development.",
+    "baseUrl": "https://tailored.sa"
+  }
+}

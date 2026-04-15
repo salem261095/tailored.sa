@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "title": "Blog",
+    "description": "Read Tailored.sa articles on branding, marketing, archetypes, and digital clarity."
+  },
+  "intro": {
+    "eyebrow": "Journal",
+    "title": "A running collection of practical brand thinking.",
+    "description": "These articles turn strategy, storytelling, and digital experience into clearer takeaways for ambitious teams."
+  },
+  "featured": {
+    "category": "Brand Strategy",
+    "title": "Why brand archetypes still matter when markets become crowded",
+    "excerpt": "A clear archetype does not reduce a brand. It sharpens the decisions behind voice, imagery, and presence.",
+    "readTime": "5 min read"
+  },
+  "articles": [
+    {
+      "category": "Marketing",
+      "title": "How to build content systems instead of posting reactively",
+      "excerpt": "A practical approach to planning social content around business intent rather than daily urgency.",
+      "readTime": "4 min read"
+    },
+    {
+      "category": "UX Writing",
+      "title": "What calmer interface language does for trust",
+      "excerpt": "Clear labels, softer friction, and better instructions make digital journeys feel more credible.",
+      "readTime": "6 min read"
+    },
+    {
+      "category": "Branding",
+      "title": "The difference between a visual refresh and a real positioning shift",
+      "excerpt": "One changes the surface. The other changes how the market understands the brand.",
+      "readTime": "5 min read"
+    },
+    {
+      "category": "Sector Marketing",
+      "title": "Why professional-service brands need stronger narrative structure",
+      "excerpt": "When expertise is complex, the website must explain value with more rhythm and less friction.",
+      "readTime": "4 min read"
+    }
+  ]
+}

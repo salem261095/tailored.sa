@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "Contact",
+    "description": "Reach Tailored.sa to discuss branding, content, strategy, UX writing, or web development."
+  },
+  "intro": {
+    "eyebrow": "Contact",
+    "title": "Tell us what the brand needs next.",
+    "description": "Use the direct channels below for a quick conversation, or share your brief through the form so we can understand the project shape."
+  },
+  "methods": [
+    {
+      "label": "WhatsApp",
+      "value": "Quick project conversations",
+      "description": "Best for fast introductions and early direction."
+    },
+    {
+      "label": "Phone",
+      "value": "Direct studio contact",
+      "description": "Useful when the scope is easier to explain in conversation."
+    },
+    {
+      "label": "Email",
+      "value": "Structured project briefs",
+      "description": "Ideal when you want to share context, goals, and timing clearly."
+    },
+    {
+      "label": "Location",
+      "value": "Dammam, Saudi Arabia",
+      "description": "Rooted in the Eastern Province and working with brands across the region."
+    }
+  ],
+  "form": {
+    "title": "Project brief",
+    "description": "This form is included in the interface for v1. Submission handling can be wired in the next phase without changing the layout.",
+    "fields": {
+      "name": "Your name",
+      "company": "Brand or company",
+      "email": "Email address",
+      "service": "Service area",
+      "brief": "Project brief"
+    },
+    "serviceOptions": [
+      "Brand strategy",
+      "Content production",
+      "Marketing strategy",
+      "UX writing",
+      "Web development"
+    ],
+    "submitLabel": "Send inquiry",
+    "note": "This v1 form is currently a presentation stub. Live submission can be connected later."
+  },
+  "location": {
+    "eyebrow": "Studio context",
+    "title": "A Saudi studio with a regional point of view.",
+    "description": "Tailored.sa began in the Eastern Province and works with businesses that need stronger digital identity, clearer messaging, and more considered brand expression."
+  }
+}
