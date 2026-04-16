@@ -3,6 +3,15 @@ export interface NavItem {
   href: string;
 }
 
+export interface LinksContent {
+  navigation: NavItem[];
+  primaryCta: NavItem;
+}
+
+export interface CategoriesContent {
+  items: string[];
+}
+
 export interface SocialLink {
   label: string;
   href: string;

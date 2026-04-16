@@ -1,3 +1,23 @@
+import { BottleneckSection } from "@/app/(site)/_components/bottleneck-section";
+import { ClientsLogoSection } from "@/app/(site)/_components/clients-logo-section";
+import { ContactSection } from "@/app/(site)/_components/contact-section";
+import { FeaturesSection } from "@/app/(site)/_components/features-section";
+import { HeroSection } from "@/app/(site)/_components/hero-section";
+import { NewsletterSection } from "@/app/(site)/_components/newsletter-section";
+import { OutcomesSection } from "@/app/(site)/_components/outcomes-section";
+import { ServicesSection } from "@/app/(site)/_components/services-section";
+
 export function HomePage() {
-  return <div />;
+  return (
+    <div className="overflow-hidden pb-16">
+      <HeroSection />
+      <ClientsLogoSection />
+      <BottleneckSection />
+      <FeaturesSection />
+      <ServicesSection />
+      <OutcomesSection />
+      <ContactSection />
+      <NewsletterSection />
+    </div>
+  );
 }

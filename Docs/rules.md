@@ -1,4 +1,7 @@
-- dont use colors not in brand colors
+- dont use colors not in brand colors 
+- design should be mobile-first and desktop respsovie
 - use start and end for alignment not left and right
 - use tailwind css for styling
 - use unified border radius for all elements 2xl
+- dont add cometns when u code
+- dont add shodow to items unless i ask u

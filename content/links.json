@@ -1,0 +1,24 @@
+{
+  "navigation": [
+    {
+      "label": "الرئيسية",
+      "href": "/"
+    },
+    {
+      "label": "عن مُحاك",
+      "href": "/about"
+    },
+    {
+      "label": "المدونة",
+      "href": "/blog"
+    },
+    {
+      "label": "تواصل معنا",
+      "href": "/contact"
+    }
+  ],
+  "primaryCta": {
+    "label": "ابدأ مشروعك",
+    "href": "/contact"
+  }
+}
