@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Exploration</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: { sans: ['Inter', 'sans-serif'] },
+colors: {
+appleText: '#1D1D1F',
+appleMuted: '#6E6E73',
+appleSoft: '#F5F5F7',
+appleBlue: '#0066CC',
+appleLine: '#E8E8ED',
+ink: '#0F172A'
+},
+letterSpacing: {
+tightest: '-0.04em',
+tighter: '-0.02em',
+body: '0.01em'
+},
+boxShadow: {
+apple: '0 2px 8px rgba(0,0,0,0.04), 0 8px 16px rgba(0,0,0,0.04), 0 16px 32px rgba(0,0,0,0.06)',
+panel: '0 20px 60px rgba(15,23,42,0.08), 0 8px 24px rgba(15,23,42,0.06)'
+}
+}
+}
+}
+</script>
+<style>
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(17, 24, 39, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 24, 39, 0.03) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.hero-glow {
+  background:
+    radial-gradient(circle at top, rgba(0, 102, 204, 0.12), transparent 42%),
+    radial-gradient(circle at 50% 70%, rgba(29, 29, 31, 0.08), transparent 36%);
+}
+
+.orb {
+  filter: blur(32px);
+}
+</style>
+</head>
+<body class="bg-white text-appleText font-sans">
+
+<header class="sticky top-0 z-50 border-b border-appleLine bg-white/75 backdrop-blur-xl">
+<div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
+<div class="text-sm font-semibold tracking-tight">Hero Study</div>
+<div class="hidden gap-8 text-xs font-medium tracking-[0.12em] text-appleMuted md:flex">
+<a href="#option-1" class="hover:text-appleText transition-colors">Option 1</a>
+<a href="#option-2" class="hover:text-appleText transition-colors">Option 2</a>
+<a href="#option-3" class="hover:text-appleText transition-colors">Option 3</a>
+</div>
+<a href="#" class="rounded-full bg-appleText px-4 py-1.5 text-sm font-medium text-white">Choose Direction</a>
+</div>
+</header>
+
+<main>
+<section class="border-b border-appleLine px-6 py-16 md:py-20">
+<div class="mx-auto max-w-5xl text-center">
+<p class="text-xs font-semibold uppercase tracking-[0.28em] text-appleMuted">Apple-tier hero exploration</p>
+<h1 class="mt-6 text-4xl font-semibold tracking-tight md:text-6xl md:tracking-tightest">
+Three elevated hero directions for the same product story.
+</h1>
+<p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-appleMuted md:text-xl">
+Each option follows the brief in a different way: one is ultra-minimal and product-led, one is editorial with stronger drama, and one introduces a refined bento preview directly in the hero.
+</p>
+</div>
+</section>
+
+<section id="option-1" class="border-b border-appleLine bg-white px-6 py-10 md:py-16">
+<div class="mx-auto mb-8 max-w-7xl">
+<p class="text-xs font-semibold uppercase tracking-[0.28em] text-appleMuted">Option 1</p>
+<h2 class="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">Floating Product Monolith</h2>
+<p class="mt-4 max-w-2xl text-base leading-7 text-appleMuted md:text-lg">
+The purest premium direction. One message, one object, almost no visual noise.
+</p>
+</div>
+<div class="hero-glow mx-auto flex min-h-[84vh] max-w-7xl flex-col items-center justify-center overflow-hidden rounded-[44px] border border-appleLine px-6 py-16 text-center md:px-12">
+<p class="text-xs font-semibold uppercase tracking-[0.32em] text-appleMuted">Enterprise infrastructure</p>
+<h3 class="mt-8 max-w-5xl text-5xl font-semibold leading-[0.94] tracking-tightest md:text-[6.5rem]">
+Built for complexity.<br>Refined to feel effortless.
+</h3>
+<p class="mt-8 max-w-2xl text-xl font-medium leading-8 tracking-tight text-appleMuted md:text-2xl">
+A precision platform for teams that need scale, speed, and visual clarity without compromise.
+</p>
+<div class="mt-12 flex flex-col gap-4 sm:flex-row">
+<a href="#" class="rounded-full bg-appleText px-8 py-4 text-lg font-medium text-white shadow-apple transition-transform duration-500 hover:scale-[1.02]">Schedule Demo</a>
+<a href="#" class="rounded-full bg-appleSoft px-8 py-4 text-lg font-medium text-appleText transition-colors duration-500 hover:bg-gray-200">View Architecture</a>
+</div>
+<div class="relative mt-20 w-full max-w-5xl">
+<div class="absolute left-1/2 top-12 h-40 w-40 -translate-x-1/2 rounded-full bg-blue-200/40 orb"></div>
+<div class="relative mx-auto w-full max-w-4xl rounded-[40px] border border-white/70 bg-white/80 p-4 shadow-panel backdrop-blur">
+<div class="overflow-hidden rounded-[32px] bg-[#f8f8fa] shadow-apple">
+<div class="flex items-center justify-between border-b border-[#E8E8ED] px-6 py-4">
+<div class="space-y-2">
+<div class="h-2.5 w-24 rounded-full bg-[#D7D7DC]"></div>
+<div class="h-2 w-16 rounded-full bg-[#E6E6EA]"></div>
+</div>
+<div class="rounded-full bg-[#111827] px-3 py-1 text-xs font-medium text-white">Live</div>
+</div>
+<div class="grid gap-4 p-6 md:grid-cols-[1.4fr_0.8fr]">
+<div class="rounded-[28px] bg-white p-6 shadow-apple">
+<div class="flex items-end justify-between">
+<div>
+<p class="text-sm font-medium tracking-body text-appleMuted">System stability</p>
+<p class="mt-3 text-5xl font-semibold tracking-tight">99.98%</p>
+</div>
+<p class="rounded-full bg-[#EAF4FF] px-3 py-1 text-sm font-medium text-appleBlue">+12%</p>
+</div>
+<div class="mt-8 flex h-36 items-end gap-3">
+<div class="h-16 w-full rounded-t-full bg-[#DCEBFF]"></div>
+<div class="h-24 w-full rounded-t-full bg-[#C4DDFF]"></div>
+<div class="h-28 w-full rounded-t-full bg-[#9CC5FF]"></div>
+<div class="h-32 w-full rounded-t-full bg-[#6FAEFF]"></div>
+<div class="h-24 w-full rounded-t-full bg-[#9CC5FF]"></div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="rounded-[28px] bg-[#111827] p-6 text-white shadow-apple">
+<p class="text-sm text-white/60">Latency</p>
+<p class="mt-3 text-4xl font-semibold">42ms</p>
+<p class="mt-6 text-sm text-white/70">Cross-region orchestration with uninterrupted throughput.</p>
+</div>
+<div class="rounded-[28px] bg-white p-6 shadow-apple">
+<p class="text-sm text-appleMuted">Protected endpoints</p>
+<p class="mt-3 text-3xl font-semibold tracking-tight">128</p>
+<div class="mt-6 flex gap-2">
+<span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+<span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+<span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+<span class="h-2 w-2 rounded-full bg-[#D7D7DC]"></span>
+<span class="h-2 w-2 rounded-full bg-[#D7D7DC]"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="option-2" class="border-b border-appleLine bg-[#FBFBFD] px-6 py-10 md:py-16">
+<div class="mx-auto mb-8 max-w-7xl">
+<p class="text-xs font-semibold uppercase tracking-[0.28em] text-appleMuted">Option 2</p>
+<h2 class="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">Split Narrative With Oversized Device</h2>
+<p class="mt-4 max-w-2xl text-base leading-7 text-appleMuted md:text-lg">
+More editorial, more dramatic, and better if you want the hero to feel like a premium launch story.
+</p>
+</div>
+<div class="hero-grid mx-auto min-h-[84vh] max-w-7xl overflow-hidden rounded-[44px] border border-appleLine px-6 py-14 md:px-10 md:py-16">
+<div class="grid items-center gap-14 md:grid-cols-[0.9fr_1.1fr]">
+<div class="max-w-xl">
+<p class="text-xs font-semibold uppercase tracking-[0.32em] text-appleMuted">For modern operations</p>
+<h3 class="mt-8 text-5xl font-semibold leading-[0.95] tracking-tightest md:text-[5.8rem]">
+See the whole system.<br>Act with total clarity.
+</h3>
+<p class="mt-8 text-xl leading-8 tracking-tight text-appleMuted md:text-2xl">
+Designed for enterprise teams who need real-time visibility, secure workflows, and a calmer interface for critical decisions.
+</p>
+<div class="mt-12 flex flex-col gap-4 sm:flex-row">
+<a href="#" class="rounded-full bg-appleText px-8 py-4 text-lg font-medium text-white shadow-apple">Explore Platform</a>
+<a href="#" class="rounded-full border border-appleLine bg-white px-8 py-4 text-lg font-medium text-appleText">Read Case Study</a>
+</div>
+<div class="mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-appleLine pt-8">
+<div>
+<p class="text-3xl font-semibold tracking-tight">18</p>
+<p class="mt-2 text-sm leading-6 text-appleMuted">Regions synchronized</p>
+</div>
+<div>
+<p class="text-3xl font-semibold tracking-tight">4.2x</p>
+<p class="mt-2 text-sm leading-6 text-appleMuted">Faster approvals</p>
+</div>
+<div>
+<p class="text-3xl font-semibold tracking-tight">24/7</p>
+<p class="mt-2 text-sm leading-6 text-appleMuted">Policy monitoring</p>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute right-8 top-10 h-40 w-40 rounded-full bg-sky-200/60 orb"></div>
+<div class="absolute bottom-10 left-4 h-32 w-32 rounded-full bg-slate-300/50 orb"></div>
+<div class="relative ml-auto w-full max-w-[760px] translate-x-0 md:translate-x-12">
+<div class="rounded-[36px] bg-[#0B1220] p-3 shadow-panel">
+<div class="overflow-hidden rounded-[30px] bg-[#111827]">
+<div class="flex items-center justify-between border-b border-white/10 px-6 py-4 text-white/70">
+<div class="flex items-center gap-2">
+<span class="h-2.5 w-2.5 rounded-full bg-white/20"></span>
+<span class="h-2.5 w-2.5 rounded-full bg-white/20"></span>
+<span class="h-2.5 w-2.5 rounded-full bg-white/20"></span>
+</div>
+<p class="text-xs font-medium uppercase tracking-[0.28em]">Overview</p>
+<span class="rounded-full bg-white/10 px-3 py-1 text-xs">Protected</span>
+</div>
+<div class="grid gap-4 p-5 md:grid-cols-[0.92fr_1.08fr]">
+<div class="space-y-4">
+<div class="rounded-[24px] bg-white/5 p-5 text-white">
+<p class="text-sm text-white/60">Active orchestration</p>
+<p class="mt-3 text-4xl font-semibold">1,284</p>
+<div class="mt-6 h-24 rounded-[20px] bg-gradient-to-b from-white/10 to-white/5 p-4">
+<div class="flex h-full items-end gap-2">
+<div class="h-8 w-full rounded-full bg-[#5DA8FF]"></div>
+<div class="h-12 w-full rounded-full bg-[#77B6FF]"></div>
+<div class="h-16 w-full rounded-full bg-[#8AC2FF]"></div>
+<div class="h-20 w-full rounded-full bg-[#A0CEFF]"></div>
+<div class="h-14 w-full rounded-full bg-[#77B6FF]"></div>
+</div>
+</div>
+</div>
+<div class="rounded-[24px] bg-white p-5">
+<p class="text-sm text-appleMuted">Priority queue</p>
+<div class="mt-4 space-y-3">
+<div class="rounded-2xl bg-appleSoft px-4 py-3">
+<p class="text-sm font-medium">Audit trail export</p>
+</div>
+<div class="rounded-2xl bg-appleSoft px-4 py-3">
+<p class="text-sm font-medium">Access policy review</p>
+</div>
+<div class="rounded-2xl bg-appleSoft px-4 py-3">
+<p class="text-sm font-medium">Cross-team deployment signoff</p>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="rounded-[26px] bg-white p-6">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm text-appleMuted">Decision graph</p>
+<p class="mt-3 text-3xl font-semibold tracking-tight text-appleText">Operations pulse</p>
+</div>
+<span class="rounded-full bg-[#EAF4FF] px-3 py-1 text-sm font-medium text-appleBlue">Stable</span>
+</div>
+<div class="mt-8 h-56 rounded-[24px] bg-[linear-gradient(180deg,#ffffff_0%,#f3f7ff_100%)] p-4">
+<div class="relative h-full w-full overflow-hidden rounded-[20px] border border-[#E5ECF8]">
+<div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#BBD7FF] to-transparent"></div>
+<div class="absolute left-4 top-10 h-px w-[86%] bg-[#DBE6F5]"></div>
+<div class="absolute left-4 top-20 h-px w-[86%] bg-[#DBE6F5]"></div>
+<div class="absolute left-4 top-32 h-px w-[86%] bg-[#DBE6F5]"></div>
+<svg viewBox="0 0 480 220" class="absolute inset-0 h-full w-full">
+<path d="M20 170 C120 150, 150 70, 235 100 S360 180, 460 36" fill="none" stroke="#2E7EEA" stroke-width="6" stroke-linecap="round"/>
+</svg>
+</div>
+</div>
+</div>
+<div class="grid gap-4 md:grid-cols-2">
+<div class="rounded-[24px] bg-white/10 p-5 text-white">
+<p class="text-sm text-white/60">Response window</p>
+<p class="mt-3 text-3xl font-semibold">6 min</p>
+</div>
+<div class="rounded-[24px] bg-white/10 p-5 text-white">
+<p class="text-sm text-white/60">Verified requests</p>
+<p class="mt-3 text-3xl font-semibold">99.4%</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="option-3" class="bg-white px-6 py-10 md:py-16">
+<div class="mx-auto mb-8 max-w-7xl">
+<p class="text-xs font-semibold uppercase tracking-[0.28em] text-appleMuted">Option 3</p>
+<h2 class="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">Hero With Bento Prelude</h2>
+<p class="mt-4 max-w-2xl text-base leading-7 text-appleMuted md:text-lg">
+The most balanced direction. Still premium, but it starts communicating key capabilities immediately.
+</p>
+</div>
+<div class="mx-auto min-h-[88vh] max-w-7xl overflow-hidden rounded-[44px] border border-appleLine bg-white px-6 py-16 md:px-10">
+<div class="mx-auto max-w-4xl text-center">
+<p class="text-xs font-semibold uppercase tracking-[0.32em] text-appleMuted">Precision at enterprise scale</p>
+<h3 class="mt-8 text-5xl font-semibold leading-[0.96] tracking-tightest md:text-[5.8rem]">
+Everything important.<br>Nothing in the way.
+</h3>
+<p class="mx-auto mt-8 max-w-3xl text-xl leading-8 tracking-tight text-appleMuted md:text-2xl">
+A streamlined operating layer for data, services, and decision-making, designed with the discipline of native software.
+</p>
+<div class="mt-12 flex flex-col justify-center gap-4 sm:flex-row">
+<a href="#" class="rounded-full bg-appleText px-8 py-4 text-lg font-medium text-white shadow-apple">Book Walkthrough</a>
+<a href="#" class="rounded-full bg-appleSoft px-8 py-4 text-lg font-medium text-appleText">Explore Modules</a>
+</div>
+</div>
+<div class="mt-16 grid gap-6 md:grid-cols-12 md:grid-rows-2">
+<div class="rounded-[32px] bg-appleSoft p-8 shadow-apple md:col-span-7 md:row-span-2">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-sm font-medium tracking-body text-appleMuted">Command surface</p>
+<h4 class="mt-3 text-3xl font-semibold tracking-tight">Live operational context</h4>
+</div>
+<span class="rounded-full bg-white px-3 py-1 text-sm font-medium text-appleText shadow-sm">Realtime</span>
+</div>
+<div class="mt-8 rounded-[28px] bg-white p-5 shadow-apple">
+<div class="grid gap-4 md:grid-cols-[1fr_0.82fr]">
+<div class="rounded-[24px] bg-[#0F172A] p-6 text-white">
+<p class="text-sm text-white/60">Throughput</p>
+<p class="mt-3 text-5xl font-semibold">4.8M</p>
+<p class="mt-3 text-sm text-white/70">events processed in the current cycle</p>
+<div class="mt-8 flex h-24 items-end gap-2">
+<div class="h-10 w-full rounded-full bg-white/20"></div>
+<div class="h-14 w-full rounded-full bg-white/30"></div>
+<div class="h-20 w-full rounded-full bg-[#5AA8FF]"></div>
+<div class="h-16 w-full rounded-full bg-white/30"></div>
+<div class="h-22 w-full rounded-full bg-[#7AB8FF]"></div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="rounded-[24px] bg-appleSoft p-5">
+<p class="text-sm text-appleMuted">Priority incidents</p>
+<p class="mt-3 text-3xl font-semibold">03</p>
+<p class="mt-3 text-sm leading-6 text-appleMuted">All contained inside the active policy window.</p>
+</div>
+<div class="rounded-[24px] bg-appleSoft p-5">
+<p class="text-sm text-appleMuted">Trust score</p>
+<p class="mt-3 text-3xl font-semibold">AA+</p>
+<div class="mt-4 h-2 rounded-full bg-white">
+<div class="h-2 w-4/5 rounded-full bg-appleBlue"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="rounded-[32px] bg-appleSoft p-8 shadow-apple md:col-span-5">
+<p class="text-sm font-medium tracking-body text-appleMuted">Secure workflow</p>
+<h4 class="mt-3 text-2xl font-semibold tracking-tight">Approvals without bottlenecks</h4>
+<div class="mt-8 space-y-4">
+<div class="rounded-[24px] bg-white p-4 shadow-sm">
+<p class="text-sm font-medium">Request created</p>
+<p class="mt-1 text-sm text-appleMuted">Policy package generated automatically</p>
+</div>
+<div class="rounded-[24px] bg-white p-4 shadow-sm">
+<p class="text-sm font-medium">Legal + operations review</p>
+<p class="mt-1 text-sm text-appleMuted">Parallel routing replaces serial approvals</p>
+</div>
+<div class="rounded-[24px] bg-white p-4 shadow-sm">
+<p class="text-sm font-medium">Controlled release</p>
+<p class="mt-1 text-sm text-appleMuted">All handoffs logged and verified</p>
+</div>
+</div>
+</div>
+<div class="rounded-[32px] bg-[#111827] p-8 text-white shadow-apple md:col-span-5">
+<p class="text-sm font-medium text-white/60">System trust</p>
+<h4 class="mt-3 text-2xl font-semibold tracking-tight">Protection built into the operating layer</h4>
+<p class="mt-4 text-base leading-7 text-white/70">
+Every action is observable, every path is attributable, and every exception is surfaced without adding interface clutter.
+</p>
+<div class="mt-8 flex gap-3">
+<span class="rounded-full bg-white/10 px-4 py-2 text-sm">End-to-end audit trail</span>
+<span class="rounded-full bg-white/10 px-4 py-2 text-sm">Zero-trust access</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+</body>
+</html>

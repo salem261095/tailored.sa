@@ -1,3 +1,6 @@
+import { ContactForm } from "@/app/(site)/_components/contact-form";
+import { agencyInfoContent } from "@/lib/content";
+
 export function ContactPage() {
   return (
     <div className="px-6 py-16 md:px-8 md:py-24">
@@ -23,68 +26,30 @@ export function ContactPage() {
             <div className="mt-5 space-y-5">
               <div className="rounded bg-surface px-5 py-5">
                 <p className="text-sm font-semibold text-muted">البريد الإلكتروني</p>
-                <p className="mt-2 text-lg font-bold text-foreground">mohamed@tailored.sa</p>
+                <p className="mt-2 text-lg font-bold text-foreground">
+                  {agencyInfoContent.contactEmail}
+                </p>
               </div>
               <div className="rounded bg-surface px-5 py-5">
                 <p className="text-sm font-semibold text-muted">واتساب</p>
-                <p className="mt-2 text-lg font-bold text-foreground">966591960366</p>
+                <p className="mt-2 text-lg font-bold text-foreground">
+                  {agencyInfoContent.whatsapp}
+                </p>
               </div>
               <div className="rounded bg-surface px-5 py-5">
                 <p className="text-sm font-semibold text-muted">الموقع</p>
                 <p className="mt-2 text-lg font-bold text-foreground">
-                  الدمام، المملكة العربية السعودية
+                  {agencyInfoContent.address}
                 </p>
               </div>
             </div>
           </div>
 
-          <form
-            className="grid gap-4"
-            action="mailto:tailored2024@gmail.com"
-            method="post"
-            encType="text/plain"
-          >
-            <div className="grid gap-4 md:grid-cols-2">
-              <input
-                type="text"
-                placeholder="الاسم"
-                className="w-full rounded border border-black/8 bg-surface px-4 py-4 text-base text-foreground outline-none transition placeholder:text-muted focus:border-foreground"
-              />
-              <input
-                type="text"
-                placeholder="اسم الشركة"
-                className="w-full rounded border border-black/8 bg-surface px-4 py-4 text-base text-foreground outline-none transition placeholder:text-muted focus:border-foreground"
-              />
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-2">
-              <input
-                type="email"
-                placeholder="البريد الإلكتروني"
-                className="w-full rounded border border-black/8 bg-surface px-4 py-4 text-base text-foreground outline-none transition placeholder:text-muted focus:border-foreground"
-              />
-              <select className="w-full rounded border border-black/8 bg-surface px-4 py-4 text-base text-foreground outline-none transition focus:border-foreground">
-                <option>الخدمة المطلوبة</option>
-                <option>استراتيجية العلامة</option>
-                <option>صناعة المحتوى</option>
-                <option>التسويق</option>
-                <option>تطوير الويب</option>
-              </select>
-            </div>
-
-            <textarea
-              placeholder="كيف يمكننا مساعدتك؟"
-              rows={7}
-              className="w-full rounded border border-black/8 bg-surface px-4 py-4 text-base text-foreground outline-none transition placeholder:text-muted focus:border-foreground"
-            />
-
-            <button
-              type="submit"
-              className="inline-flex items-center justify-center rounded-2xl bg-foreground px-6 py-4 text-base font-semibold text-white transition hover:bg-primary-light"
-            >
-              أرسل رسالتك
-            </button>
-          </form>
+          <ContactForm
+            submitLabel="أرسل رسالتك"
+            messagePlaceholder="كيف يمكننا مساعدتك؟"
+            rows={7}
+          />
         </div>
       </section>
     </div>

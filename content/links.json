@@ -11,14 +11,10 @@
     {
       "label": "المدونة",
       "href": "/blog"
-    },
-    {
-      "label": "تواصل معنا",
-      "href": "/contact"
     }
   ],
   "primaryCta": {
-    "label": "ابدأ مشروعك",
+    "label": "تواصل معنا",
     "href": "/contact"
   }
 }

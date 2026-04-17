@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { SectionHeading } from "@/components/ui/section-heading";
+
 export function BottleneckSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -22,7 +24,7 @@ export function BottleneckSection() {
       },
       {
         threshold: 0.35,
-      }
+      },
     );
 
     observer.observe(section);
@@ -42,11 +44,11 @@ export function BottleneckSection() {
           }`}
         >
           <p className="text-sm font-semibold text-white/55">ما الذي يعيق التقدّم؟</p>
-          <h2 className="mt-4 text-4xl font-black leading-[1.05] tracking-[-0.05em] text-white md:text-5xl lg:text-6xl">
+          <SectionHeading tone="inverse" size="large" className="mt-4">
             العوائق التي تُبطئ نموّك
             <br />
             وتؤخّر أثر علامتك.
-          </h2>
+          </SectionHeading>
         </div>
       </div>
     </section>

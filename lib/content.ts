@@ -1,3 +1,4 @@
+import agencyInfoJson from "@/content/agency-info.json";
 import categoriesJson from "@/content/categories.json";
 import digitalOutcomesJson from "@/content/digital-outcomes.json";
 import siteJson from "@/content/site.json";
@@ -7,6 +8,7 @@ import linksJson from "@/content/links.json";
 import servicesJson from "@/content/services.json";
 
 export const siteContent = siteJson;
+export const agencyInfoContent = agencyInfoJson;
 export const heroContent = heroJson;
 export const featuresContent = featuresJson;
 export const servicesContent = servicesJson;
