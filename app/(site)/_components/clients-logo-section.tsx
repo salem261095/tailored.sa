@@ -5,32 +5,26 @@ const clientLogos = Array.from({ length: 6 }, (_, index) => ({
 }));
 
 export function ClientsLogoSection() {
-  const logoTrack = [...clientLogos, ...clientLogos];
-
   return (
     <section className="relative">
-      <div className="mx-auto flex max-w-content flex-col gap-6 px-6 md:px-8">
-        <div className="rounded bg-white/45 px-5 py-6 md:px-8 md:py-7">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <p className="max-w-xs text-sm font-medium leading-7 text-muted">
-              نثق بأن الحضور المتقن يبدأ مع شركاء يقدّرون الجودة والاتساق.
-            </p>
-
-            <div className="w-full overflow-hidden lg:max-w-[52rem]">
+      <div className="mx-auto max-w-content px-4 sm:px-6 md:px-8">
+        <div className="overflow-hidden">
+          <div className="grid grid-cols-2 md:grid-cols-5">
+            {clientLogos.map((logo, index) => (
               <div
-                dir="ltr"
-                className="animate-marquee flex min-w-max items-center gap-10 md:gap-14"
+                key={logo.id}
+                className={`group flex min-h-24 items-center justify-center bg-white/30 p-6 transition-all duration-300 hover:bg-white sm:min-h-28 md:min-h-32
+                  border-b border-black/10
+                  border-e border-black/10
+                  md:border-b md:border-e`}
               >
-                {logoTrack.map((logo, index) => (
-                  <img
-                    key={`${logo.id}-${index}`}
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="h-7 w-auto shrink-0 opacity-70 md:h-8"
-                  />
-                ))}
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-7 w-auto max-w-[8rem] opacity-70 transition-all duration-300 group-hover:opacity-100 group-hover:scale-105 sm:h-8 md:h-9"
+                />
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
