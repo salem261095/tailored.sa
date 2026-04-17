@@ -13,8 +13,8 @@ export function HomePage() {
     <div className="overflow-hidden pb-16">
       <HeroSection />
       <ClientsLogoSection />
-      <BottleneckSection />
       <FeaturesSection />
+      <BottleneckSection />
       <ServicesSection />
       <OutcomesSection />
       <PostsSection />
