@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #111111;
+  --color-black: #1d1d1d;
+  --color-primary: var(--color-black);
   --color-primary-light: #2a2a2a;
   --color-primary-muted: #767676;
 
@@ -13,7 +14,7 @@
   --color-surface: #f5f5f3;
   --color-surface-alt: #ebebe8;
 
-  --color-foreground: #111111;
+  --color-foreground: var(--color-black);
   --color-muted: #727272;
   --radius: 1rem;
   --content-width: 80rem;
@@ -39,7 +40,7 @@ body {
 }
 
 body[data-menu-open="true"] [data-hero-section] {
-  background: #111111;
+  background: var(--color-black);
 }
 
 a {

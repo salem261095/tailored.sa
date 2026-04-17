@@ -1,7 +1,6 @@
 import { BottleneckSection } from "@/app/(site)/_components/bottleneck-section";
 import { ClientsLogoSection } from "@/app/(site)/_components/clients-logo-section";
 import { ContactSection } from "@/app/(site)/_components/contact-section";
-import { CtaSection } from "@/app/(site)/_components/cta-section";
 import { FeaturesSection } from "@/app/(site)/_components/features-section";
 import { HeroSection } from "@/app/(site)/_components/hero-section";
 import { OutcomesSection } from "@/app/(site)/_components/outcomes-section";
@@ -18,7 +17,6 @@ export function HomePage() {
       <ServicesSection />
       <OutcomesSection />
       <PostsSection />
-      <CtaSection />
       <ContactSection />
     </div>
   );

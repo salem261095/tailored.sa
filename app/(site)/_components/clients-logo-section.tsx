@@ -39,12 +39,12 @@ export function ClientsLogoSection() {
             {clientLogos.map((logo) => (
               <div
                 key={logo.id}
-                className="group flex min-h-18 items-center justify-center border-b border-e border-black/10 bg-white/30 p-5 transition-all duration-300 hover:bg-white sm:min-h-24 sm:p-6 md:min-h-24 md:border-b md:border-e"
+                className="group flex min-h-18 items-center justify-center border-b border-e border-black/10 bg-white/30 p-5 transition-all duration-300 hover:bg-white sm:min-h-24 sm:p-6 md:min-h-36 md:border-b md:border-e"
               >
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="max-h-[3.1rem] w-auto max-w-full object-contain opacity-70 transition-all duration-300 group-hover:scale-105 group-hover:opacity-100 sm:max-h-[3.6rem] md:max-h-[4.2rem]"
+                  className="max-h-[3.5rem] w-auto max-w-full object-contain opacity-70 transition-all duration-300 group-hover:scale-105 group-hover:opacity-100 sm:max-h-[4rem] md:max-h-[4.75rem]"
                 />
               </div>
             ))}

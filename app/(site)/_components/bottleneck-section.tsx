@@ -1,55 +1,49 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 import { SectionHeading } from "@/components/ui/section-heading";
+import {
+  createDividerLead,
+  createFadeUp,
+  createTweenTransition,
+} from "@/lib/motion";
 
 export function BottleneckSection() {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const prefersReducedMotion = useReducedMotion() ?? false;
 
-  useEffect(() => {
-    const section = sectionRef.current;
-
-    if (!section) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      {
-        threshold: 0.35,
-      },
-    );
-
-    observer.observe(section);
-
-    return () => observer.disconnect();
-  }, []);
+  const dividerTransition = createTweenTransition(prefersReducedMotion, 0.72, 0.18);
+  const contentTransition = createTweenTransition(prefersReducedMotion, 0.82, 0.2, 0.08);
 
   return (
-    <section
-      ref={sectionRef}
-      className="flex min-h-screen items-center bg-foreground px-6 py-24 text-white md:px-8 md:py-32"
-    >
+    <section className="flex min-h-screen items-center bg-foreground px-6 py-24 text-white md:px-8 md:py-32">
       <div className="mx-auto flex w-full max-w-content items-center">
-        <div
-          className={`mx-auto max-w-4xl transition-all duration-1000 ease-out ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-          }`}
+        <motion.div
+          className="mx-auto max-w-4xl"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.45 }}
         >
-          <p className="text-sm font-semibold text-white/55">ما الذي يعيق التقدّم؟</p>
-          <SectionHeading tone="inverse" size="large" className="mt-4">
-            العوائق التي تُبطئ نموّك
-            <br />
-            وتؤخّر أثر علامتك.
-          </SectionHeading>
-        </div>
+          <motion.div
+            className="h-px w-20 bg-white/35 md:w-28"
+            variants={createDividerLead(prefersReducedMotion)}
+            transition={dividerTransition}
+            style={{ transformOrigin: "right center" }}
+          />
+
+          <motion.div
+            className="mt-8 md:mt-10"
+            variants={createFadeUp(prefersReducedMotion)}
+            transition={contentTransition}
+          >
+            <p className="text-sm font-semibold text-white/55">ما الذي يعيق التقدّم؟</p>
+            <SectionHeading tone="inverse" size="large" className="mt-4">
+              العوائق التي تُبطئ نموّك
+              <br />
+              وتؤخّر أثر علامتك.
+            </SectionHeading>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,9 +1,10 @@
 import Link from "next/link";
 
+import { NewsletterSignupForm } from "@/components/shared/newsletter-signup-form";
 import { linksContent, siteContent } from "@/lib/content";
 
 const FOOTER_COPY =
-  " مُحَاك هي وكالة إبداعية تقدم حلولًا تسويقية للمشاريع ذات الحضور الرقمي في المملكة العربية السعودية";
+  "مُحاك هي وكالة إبداعية تقدم حلولًا تسويقية للمشاريع ذات الحضور الرقمي في المملكة العربية السعودية";
 const COPYRIGHT_YEAR = "2026";
 
 export function SiteFooter() {
@@ -13,7 +14,7 @@ export function SiteFooter() {
   } = siteContent;
 
   return (
-    <footer className="bg-[#111111] px-6 pb-8 pt-16 text-white md:px-8 md:pt-20">
+    <footer className="mt-12 bg-primary px-6 pb-8 pt-16 text-white md:mt-16 md:px-8 md:pt-20">
       <div className="mx-auto max-w-content">
         <div className="grid gap-12 border-b border-white/10 pb-12 md:grid-cols-[1.2fr_0.8fr] md:gap-16 md:pb-14">
           <div className="max-w-xl">
@@ -40,19 +41,7 @@ export function SiteFooter() {
               ))}
             </nav>
 
-            <form className="mt-8 grid gap-4 md:grid-cols-[1fr_auto]">
-              <input
-                type="email"
-                placeholder="أدخل بريدك الإلكتروني"
-                className="ui-radius-control w-full border border-white/12 bg-white/8 px-4 py-4 text-base text-white outline-none transition placeholder:text-white/45 focus:border-white/30"
-              />
-              <button
-                type="submit"
-                className="ui-radius-button inline-flex items-center justify-center bg-white px-6 py-4 text-base font-semibold text-foreground transition hover:bg-white/90"
-              >
-                اشترك الآن
-              </button>
-            </form>
+            <NewsletterSignupForm variant="footer" />
           </div>
         </div>
 

@@ -9,7 +9,7 @@ const INTRO_EXIT_MS = 1120;
 const PANEL_COUNT = 2;
 
 export function IntroSplash() {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useReducedMotion() ?? false;
   const [isVisible, setIsVisible] = useState(true);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const panels = useMemo(() => Array.from({ length: PANEL_COUNT }), []);
