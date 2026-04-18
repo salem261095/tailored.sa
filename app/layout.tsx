@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
-import { siteContent } from "@/lib/content";
+import { GoogleAnalytics } from "@/components/shared/google-analytics";
+import { JsonLd } from "@/components/shared/json-ld";
+import {
+  absoluteUrl,
+  createLocalBusinessSchema,
+  createOrganizationSchema,
+  createWebsiteSchema,
+  siteSeo,
+} from "@/lib/seo";
 import "./globals.css";
 
 const gtAmericaArabic = localFont({
@@ -34,22 +42,39 @@ const gtAmericaArabicDisplay = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteContent.seo.baseUrl),
+  metadataBase: new URL(siteSeo.baseUrl),
   title: {
-    default: siteContent.seo.defaultTitle,
-    template: `%s | ${siteContent.seo.siteName}`,
+    default: siteSeo.defaultTitle,
+    template: `%s | ${siteSeo.siteName}`,
   },
-  description: siteContent.seo.defaultDescription,
+  description: siteSeo.defaultDescription,
+  applicationName: siteSeo.siteName,
+  alternates: {
+    canonical: "/",
+  },
+  keywords: [...siteSeo.defaultKeywords],
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+  },
   openGraph: {
-    title: siteContent.seo.defaultTitle,
-    description: siteContent.seo.defaultDescription,
-    siteName: siteContent.seo.siteName,
+    title: siteSeo.defaultTitle,
+    description: siteSeo.defaultDescription,
+    url: siteSeo.baseUrl,
+    siteName: siteSeo.siteName,
+    locale: siteSeo.locale,
     type: "website",
+    images: [
+      {
+        url: absoluteUrl(siteSeo.ogImage),
+        alt: siteSeo.siteName,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteContent.seo.defaultTitle,
-    description: siteContent.seo.defaultDescription,
+    title: siteSeo.defaultTitle,
+    description: siteSeo.defaultDescription,
+    images: [absoluteUrl(siteSeo.ogImage)],
   },
 };
 
@@ -63,6 +88,14 @@ export default function RootLayout({
       <body
         className={`${gtAmericaArabic.variable} ${gtAmericaArabicDisplay.variable} bg-surface font-sans text-foreground antialiased`}
       >
+        <GoogleAnalytics />
+        <JsonLd
+          data={[
+            createOrganizationSchema(),
+            createWebsiteSchema(),
+            createLocalBusinessSchema(),
+          ]}
+        />
         {children}
       </body>
     </html>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { digitalOutcomesContent } from "@/lib/content";
 
@@ -40,9 +41,9 @@ export function OutcomesSection() {
             }}
             transition={revealTransition}
           >
-            <p className="text-sm font-semibold text-white/45">
+            <SectionEyebrow tone="inverse">
               {digitalOutcomesContent.eyebrow}
-            </p>
+            </SectionEyebrow>
             <SectionHeading tone="inverse" className="mt-4 max-w-full">
               {digitalOutcomesContent.title}
             </SectionHeading>

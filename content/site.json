@@ -1,8 +1,9 @@
 {
   "seo": {
     "siteName": "مُحاك",
-    "defaultTitle": "Tailored Digital Agency",
-    "defaultDescription": "وكالة مُحاك الإبداعية – نصنع علامات تجارية مؤثرة بتوظيف الاستراتيجية والمحتوى والتصميم.",
+    "defaultTitle": "استراتيجية العلامة التجارية في السعودية",
+    "defaultDescription": "مُحاك وكالة استراتيجية علامة تجارية في السعودية تساعد الشركات على بناء هوية أوضح ورسائل أقوى وتجربة رقمية تدعم النمو التجاري.",
+    "defaultSocialImage": "/brand/tailored-black.svg",
     "baseUrl": "https://tailored.sa"
   }
 }

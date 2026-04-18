@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
   createDividerLead,
@@ -36,7 +37,7 @@ export function BottleneckSection() {
             variants={createFadeUp(prefersReducedMotion)}
             transition={contentTransition}
           >
-            <p className="text-sm font-semibold text-white/55">ما الذي يعيق التقدّم؟</p>
+            <SectionEyebrow tone="inverse">ما الذي يعيق التقدّم؟</SectionEyebrow>
             <SectionHeading tone="inverse" size="large" className="mt-4">
               العوائق التي تُبطئ نموّك
               <br />

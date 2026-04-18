@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { SharedPageHero } from "@/app/(site)/_components/shared-page-hero";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 import { SectionHeading } from "@/components/ui/section-heading";
 import type { BlogPostPreview } from "@/lib/wordpress";
 
@@ -14,7 +15,7 @@ export function BlogPage({ errorMessage, posts }: BlogPageProps) {
     <div>
       <SharedPageHero>
         <div className="max-w-4xl">
-          <p className="text-sm font-semibold text-muted">المدونة</p>
+          <SectionEyebrow>المدونة</SectionEyebrow>
           <SectionHeading className="mt-3">
             مقالات وأفكار حول الهوية والمحتوى والتسويق الرقمي.
           </SectionHeading>

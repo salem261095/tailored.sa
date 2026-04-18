@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
   createFadeUp,
@@ -10,11 +11,7 @@ import {
   createTweenTransition,
 } from "@/lib/motion";
 
-export function PostsSectionShell({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export function PostsSectionShell({ children }: { children: ReactNode }) {
   const prefersReducedMotion = useReducedMotion() ?? false;
 
   return (
@@ -31,7 +28,7 @@ export function PostsSectionShell({
           variants={createFadeUp(prefersReducedMotion)}
           transition={createTweenTransition(prefersReducedMotion)}
         >
-          <p className="text-sm font-semibold text-muted">المدونة</p>
+          <SectionEyebrow>المدونة</SectionEyebrow>
           <SectionHeading className="mt-3">
             أحدث المقالات في التسويق وتصميم العلامات
           </SectionHeading>

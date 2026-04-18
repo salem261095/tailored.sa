@@ -2,6 +2,7 @@ import { Mail, MapPin, MessageCircle } from "lucide-react";
 
 import { ContactForm } from "@/app/(site)/_components/contact-form";
 import { SharedPageHero } from "@/app/(site)/_components/shared-page-hero";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 import { agencyInfoContent } from "@/lib/content";
 
 const contactItems = [
@@ -29,7 +30,7 @@ export function ContactPage() {
     <div>
       <SharedPageHero>
         <div className="max-w-4xl">
-          <p className="text-sm font-semibold text-muted">تواصل معنا</p>
+          <SectionEyebrow>تواصل معنا</SectionEyebrow>
           <h1 className="mt-3 text-4xl font-black leading-[1.05] tracking-[-0.05em] text-foreground md:text-6xl">
             لنبدأ حديثًا واضحًا
             <br />
@@ -45,7 +46,7 @@ export function ContactPage() {
       <section className="mx-auto mt-12 max-w-content px-6 pb-24 md:mt-16 md:px-8 md:pb-32">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
           <div className="lg:pt-2">
-            <p className="text-sm font-semibold text-muted">قنوات التواصل</p>
+            <SectionEyebrow>قنوات التواصل</SectionEyebrow>
             <p className="mt-4 max-w-md text-base leading-8 text-muted md:text-lg">
               اختر القناة الأنسب لك، أو أرسل تفاصيل المشروع مباشرة عبر النموذج.
             </p>

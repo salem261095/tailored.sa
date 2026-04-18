@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 type SubmitState = "idle" | "submitting" | "success" | "error";
@@ -105,7 +106,7 @@ export function NewsletterSignupForm({
       <div className="mx-auto max-w-content rounded bg-foreground px-5 py-8 text-white md:px-8 md:py-10">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-end lg:gap-12">
           <div>
-            <p className="text-sm font-semibold text-white/55">النشرة البريدية</p>
+            <SectionEyebrow tone="inverse">النشرة البريدية</SectionEyebrow>
             <SectionHeading tone="inverse" className="mt-3 max-w-md">
               أفكار قصيرة تصل إليك قبل أن تضيع في الزحام.
             </SectionHeading>

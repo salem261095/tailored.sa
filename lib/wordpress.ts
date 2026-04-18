@@ -28,6 +28,7 @@ type ArchivePostNode = {
   databaseId: number;
   date: string;
   excerpt: string;
+  modified: string;
   slug: string;
   title: string;
 };
@@ -43,6 +44,7 @@ type SinglePostNode = {
   content: string;
   databaseId: number;
   date: string;
+  modified: string;
   slug: string;
   title: string;
 };
@@ -61,6 +63,7 @@ export type BlogPostPreview = {
   date: string;
   databaseId: number;
   excerpt: string;
+  modified: string;
   slug: string;
   title: string;
 };
@@ -70,6 +73,7 @@ export type BlogPostDetail = {
   content: string;
   date: string;
   databaseId: number;
+  modified: string;
   slug: string;
   title: string;
 };
@@ -78,14 +82,15 @@ const ARCHIVE_POSTS_QUERY = `
   query GetArchivePosts($first: Int = 10) {
     posts(first: $first) {
       nodes {
-        databaseId
-        slug
-        title
-        excerpt
-        date
-        categories {
-          nodes {
-            name
+      databaseId
+      slug
+      title
+      excerpt
+      date
+      modified
+      categories {
+        nodes {
+          name
             slug
           }
         }
@@ -102,6 +107,7 @@ const SINGLE_POST_QUERY = `
       title
       content
       date
+      modified
       categories {
         nodes {
           name
@@ -173,6 +179,7 @@ export async function getArchivePosts(
     date: post.date,
     databaseId: post.databaseId,
     excerpt: toPlainText(post.excerpt),
+    modified: post.modified,
     slug: post.slug,
     title: toPlainText(post.title),
   }));
@@ -197,6 +204,7 @@ export async function getSinglePost(
     content: data.post.content,
     date: data.post.date,
     databaseId: data.post.databaseId,
+    modified: data.post.modified,
     slug: data.post.slug,
     title: toPlainText(data.post.title),
   };

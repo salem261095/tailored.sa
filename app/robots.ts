@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { siteContent } from "@/lib/content";
+import { siteSeo } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,6 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${siteContent.seo.baseUrl}/sitemap.xml`,
+    host: siteSeo.baseUrl,
+    sitemap: `${siteSeo.baseUrl}/sitemap.xml`,
   };
 }

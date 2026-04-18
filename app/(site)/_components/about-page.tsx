@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 import { SharedPageHero } from "@/app/(site)/_components/shared-page-hero";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 const aboutStory = [
   "نشأ مؤسسو هذه الوكالة في عائلة أحسائية توارثت مهنتي خياطة المشالح العربية وصياغة الذهب جيلًا بعد جيل، في مدينة عرفت بإبداعها وحرفيتها. ومن تلك القدرة المتوارثة على التشكيل، ولدت لدى مُحاك عناية خاصة بصناعة الصورة والرسالة، من حياكة الأفكار إلى صياغة الكلمات، لتخرج العلامات التجارية بملمس أدق وحضور أوضح.",
@@ -34,7 +36,7 @@ export function AboutPage() {
     <div>
       <SharedPageHero>
         <div className="max-w-4xl">
-          <p className="text-sm font-semibold text-muted">من نحن</p>
+          <SectionEyebrow>من نحن</SectionEyebrow>
           <h1 className="mt-3 text-4xl font-black leading-[1.05] tracking-[-0.05em] text-foreground md:text-6xl">
             نحمل الحرفة إلى العالم الرقمي
             <br />
@@ -63,11 +65,11 @@ export function AboutPage() {
           <div className="mt-12 md:mt-16">
             <div className="flex flex-col gap-4 border-b border-black/8 pb-6 md:flex-row md:items-end md:justify-between">
               <div className="max-w-2xl">
-                <p className="text-sm font-semibold text-muted">فلسفة مُحاك</p>
-                <h2 className="mt-3 text-3xl font-black leading-[1.08] tracking-[-0.04em] text-foreground md:text-[3.25rem]">
+                <SectionEyebrow>فلسفة مُحاك</SectionEyebrow>
+                <SectionHeading className="mt-3">
                   ثلاث ركائز
                   <span className="text-accent">.</span>
-                </h2>
+                </SectionHeading>
               </div>
 
               <p className="max-w-xl text-base leading-8 text-muted md:text-lg">
@@ -100,7 +102,7 @@ export function AboutPage() {
           </div>
 
           <div className="mt-14 border-t border-black/8 pt-8 md:mt-20 md:pt-10">
-            <p className="text-sm font-semibold text-muted">هل مشروعك جاهز؟</p>
+            <SectionEyebrow>هل مشروعك جاهز؟</SectionEyebrow>
             <p className="mt-4 max-w-2xl text-lg leading-8 text-foreground/82 md:text-xl">
               إن كان مشروعك مستعدًا لرحلة أكثر نضجًا واتساقًا، فنحن مستعدون
               لبدء الحديث.

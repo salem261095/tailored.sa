@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 const serviceOptions = [
   "استراتيجية العلامة",
@@ -9,6 +10,8 @@ const serviceOptions = [
   "تطوير الويب",
 ] as const;
 
+const ATTRIBUTION_STORAGE_KEY = "tailored.leadAttribution";
+
 type ContactFormProps = {
   rows?: number;
   submitLabel: string;
@@ -16,21 +19,89 @@ type ContactFormProps = {
 
 type SubmitState = "idle" | "submitting" | "success" | "error";
 
-export function ContactForm({
-  rows = 6,
-  submitLabel,
-}: ContactFormProps) {
+type LeadAttribution = {
+  channel: string;
+  landingPagePath: string;
+  landingPageUrl: string;
+  referrer: string;
+  utmCampaign: string;
+  utmMedium: string;
+  utmSource: string;
+};
+
+type ContactPayload = {
+  company: string;
+  email: string;
+  formPage: string;
+  landingPage: string;
+  landingPageUrl: string;
+  message: string;
+  name: string;
+  referrer: string;
+  service: string;
+  source: string;
+  subject: string;
+  utmCampaign: string;
+  utmMedium: string;
+  utmSource: string;
+  whatsapp: string;
+};
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
+export function ContactForm({ rows = 6, submitLabel }: ContactFormProps) {
   const formRef = useRef<HTMLFormElement | null>(null);
+  const pathname = usePathname();
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [submitMessage, setSubmitMessage] = useState("");
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const existing = readStoredAttribution();
+
+    if (existing) {
+      return;
+    }
+
+    const currentUrl = new URL(window.location.href);
+    const attribution: LeadAttribution = {
+      landingPagePath: buildPagePath(pathname, currentUrl.search.slice(1)),
+      landingPageUrl: currentUrl.toString(),
+      referrer: document.referrer,
+      utmSource: currentUrl.searchParams.get("utm_source") ?? "",
+      utmMedium: currentUrl.searchParams.get("utm_medium") ?? "",
+      utmCampaign: currentUrl.searchParams.get("utm_campaign") ?? "",
+      channel: inferChannel(document.referrer, {
+        utmSource: currentUrl.searchParams.get("utm_source") ?? "",
+        utmMedium: currentUrl.searchParams.get("utm_medium") ?? "",
+      }),
+    };
+
+    try {
+      window.sessionStorage.setItem(
+        ATTRIBUTION_STORAGE_KEY,
+        JSON.stringify(attribution),
+      );
+    } catch {
+      // Ignore storage failures and continue with runtime values.
+    }
+  }, [pathname]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+    const attribution = getLeadAttribution(pathname);
 
-    const payload = {
+    const payload: ContactPayload = {
       name: String(formData.get("name") ?? "").trim(),
       email: String(formData.get("email") ?? "").trim(),
       whatsapp: String(formData.get("whatsapp") ?? "").trim(),
@@ -38,6 +109,14 @@ export function ContactForm({
       subject: String(formData.get("subject") ?? "").trim(),
       service: String(formData.get("service") ?? "").trim(),
       message: String(formData.get("message") ?? "").trim(),
+      formPage: getCurrentPagePath(pathname),
+      landingPage: attribution.landingPagePath,
+      landingPageUrl: attribution.landingPageUrl,
+      referrer: attribution.referrer,
+      source: attribution.channel,
+      utmSource: attribution.utmSource,
+      utmMedium: attribution.utmMedium,
+      utmCampaign: attribution.utmCampaign,
     };
 
     setSubmitState("submitting");
@@ -59,11 +138,12 @@ export function ContactForm({
       if (!response.ok) {
         setSubmitState("error");
         setSubmitMessage(
-          result?.message ?? "تعذّر إرسال الرسالة حاليًا. حاول مرة أخرى."
+          result?.message ?? "تعذّر إرسال الرسالة حاليًا. حاول مرة أخرى.",
         );
         return;
       }
 
+      trackLeadSubmission(payload);
       formRef.current?.reset();
       setSubmitState("success");
       setSubmitMessage("تم إرسال رسالتك بنجاح.");
@@ -143,12 +223,13 @@ export function ContactForm({
 
         <p
           aria-live="polite"
-          className={`text-sm font-medium ${submitState === "error"
+          className={`text-sm font-medium ${
+            submitState === "error"
               ? "text-accent"
               : submitState === "success"
                 ? "text-foreground"
                 : "text-transparent"
-            }`}
+          }`}
         >
           {submitMessage || "."}
         </p>
@@ -193,4 +274,123 @@ function FormField({
 
 function RequiredMark() {
   return <span className="text-accent">*</span>;
+}
+
+function buildPagePath(pathname: string, search: string) {
+  return search ? `${pathname}?${search}` : pathname;
+}
+
+function getCurrentPagePath(pathname: string) {
+  if (typeof window === "undefined") {
+    return pathname;
+  }
+
+  return buildPagePath(pathname, window.location.search.slice(1));
+}
+
+function getLeadAttribution(pathname: string): LeadAttribution {
+  if (typeof window === "undefined") {
+    return {
+      landingPagePath: pathname,
+      landingPageUrl: pathname,
+      referrer: "",
+      utmSource: "",
+      utmMedium: "",
+      utmCampaign: "",
+      channel: "direct",
+    };
+  }
+
+  const stored = readStoredAttribution();
+
+  if (stored) {
+    return stored;
+  }
+
+  const currentUrl = new URL(window.location.href);
+  return {
+    landingPagePath: buildPagePath(pathname, currentUrl.search.slice(1)),
+    landingPageUrl: currentUrl.toString(),
+    referrer: document.referrer,
+    utmSource: currentUrl.searchParams.get("utm_source") ?? "",
+    utmMedium: currentUrl.searchParams.get("utm_medium") ?? "",
+    utmCampaign: currentUrl.searchParams.get("utm_campaign") ?? "",
+    channel: inferChannel(document.referrer, {
+      utmSource: currentUrl.searchParams.get("utm_source") ?? "",
+      utmMedium: currentUrl.searchParams.get("utm_medium") ?? "",
+    }),
+  };
+}
+
+function readStoredAttribution() {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  try {
+    const raw = window.sessionStorage.getItem(ATTRIBUTION_STORAGE_KEY);
+
+    if (!raw) {
+      return null;
+    }
+
+    return JSON.parse(raw) as LeadAttribution;
+  } catch {
+    return null;
+  }
+}
+
+function inferChannel(
+  referrer: string,
+  values: { utmMedium: string; utmSource: string },
+) {
+  if (values.utmSource) {
+    return values.utmMedium
+      ? `${values.utmSource} / ${values.utmMedium}`
+      : values.utmSource;
+  }
+
+  if (!referrer) {
+    return "direct";
+  }
+
+  const normalizedReferrer = referrer.toLowerCase();
+
+  if (
+    normalizedReferrer.includes("google.") ||
+    normalizedReferrer.includes("bing.") ||
+    normalizedReferrer.includes("yahoo.")
+  ) {
+    return "organic search";
+  }
+
+  if (
+    normalizedReferrer.includes("instagram.") ||
+    normalizedReferrer.includes("facebook.") ||
+    normalizedReferrer.includes("linkedin.") ||
+    normalizedReferrer.includes("x.com") ||
+    normalizedReferrer.includes("t.co")
+  ) {
+    return "social";
+  }
+
+  return "referral";
+}
+
+function trackLeadSubmission(payload: ContactPayload) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") {
+    return;
+  }
+
+  window.gtag("event", "generate_lead", {
+    event_category: "contact",
+    event_label: payload.subject || payload.service || "contact_form",
+    form_location: payload.formPage,
+    landing_page: payload.landingPage,
+    lead_source: payload.source,
+    utm_source: payload.utmSource || undefined,
+    utm_medium: payload.utmMedium || undefined,
+    utm_campaign: payload.utmCampaign || undefined,
+    value: 1,
+  });
 }

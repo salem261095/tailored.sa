@@ -6,10 +6,18 @@ import { agencyInfoContent, siteContent } from "@/lib/content";
 type ContactPayload = {
   company?: string;
   email?: string;
+  formPage?: string;
+  landingPage?: string;
+  landingPageUrl?: string;
   message?: string;
   name?: string;
+  referrer?: string;
   service?: string;
+  source?: string;
   subject?: string;
+  utmCampaign?: string;
+  utmMedium?: string;
+  utmSource?: string;
   whatsapp?: string;
 };
 
@@ -45,6 +53,14 @@ export async function POST(request: Request) {
   const subject = normalize(payload.subject);
   const service = normalize(payload.service);
   const message = normalize(payload.message);
+  const landingPage = normalize(payload.landingPage);
+  const landingPageUrl = normalize(payload.landingPageUrl);
+  const formPage = normalize(payload.formPage);
+  const source = normalize(payload.source);
+  const referrer = normalize(payload.referrer);
+  const utmSource = normalize(payload.utmSource);
+  const utmMedium = normalize(payload.utmMedium);
+  const utmCampaign = normalize(payload.utmCampaign);
 
   if (!name || !email || !whatsapp || !subject || !message) {
     return NextResponse.json(
@@ -86,8 +102,26 @@ export async function POST(request: Request) {
   });
 
   const recipients = getRecipientList();
-  const serviceLine = service ? `الخدمة المطلوبة: ${service}` : "الخدمة المطلوبة: غير محددة";
+  const serviceLine = service
+    ? `الخدمة المطلوبة: ${service}`
+    : "الخدمة المطلوبة: غير محددة";
   const companyLine = company ? `اسم الشركة: ${company}` : "اسم الشركة: غير مذكور";
+  const sourceLine = source ? `مصدر الزيارة: ${source}` : "مصدر الزيارة: غير معروف";
+  const landingPageLine = landingPage
+    ? `صفحة الهبوط الأولى: ${landingPage}`
+    : "صفحة الهبوط الأولى: غير متوفرة";
+  const formPageLine = formPage
+    ? `صفحة الإرسال الحالية: ${formPage}`
+    : "صفحة الإرسال الحالية: غير متوفرة";
+  const landingPageUrlLine = landingPageUrl
+    ? `رابط صفحة الهبوط: ${landingPageUrl}`
+    : "رابط صفحة الهبوط: غير متوفر";
+  const referrerLine = referrer ? `المرجع: ${referrer}` : "المرجع: مباشر";
+  const utmSourceLine = utmSource ? `utm_source: ${utmSource}` : "utm_source: غير متوفر";
+  const utmMediumLine = utmMedium ? `utm_medium: ${utmMedium}` : "utm_medium: غير متوفر";
+  const utmCampaignLine = utmCampaign
+    ? `utm_campaign: ${utmCampaign}`
+    : "utm_campaign: غير متوفر";
 
   const text = [
     `الاسم: ${name}`,
@@ -96,6 +130,16 @@ export async function POST(request: Request) {
     companyLine,
     `الموضوع: ${subject}`,
     serviceLine,
+    "",
+    "بيانات الإسناد:",
+    sourceLine,
+    landingPageLine,
+    formPageLine,
+    landingPageUrlLine,
+    referrerLine,
+    utmSourceLine,
+    utmMediumLine,
+    utmCampaignLine,
     "",
     "الرسالة:",
     message,

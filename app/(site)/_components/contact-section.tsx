@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 import { ContactForm } from "@/app/(site)/_components/contact-form";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
   createFadeUp,
@@ -29,13 +30,13 @@ export function ContactSection() {
             variants={createFadeUp(prefersReducedMotion)}
             transition={revealTransition}
           >
-            <p className="text-sm font-semibold text-muted">تواصل معنا</p>
+            <SectionEyebrow>تواصل معنا</SectionEyebrow>
             <SectionHeading className="mt-3 max-w-md">
               ابدأ الحديث حول مشروعك القادم.
             </SectionHeading>
             <p className="mt-5 max-w-md text-base leading-8 text-muted md:text-lg">
-              شاركنا فكرتك، وسنرتب لك مسارًا أوضح للهوية والمحتوى والتجربة
-              الرقمية.
+              شاركنا فكرتك، وسنرتب لك مسارًا أوضح لاستراتيجية العلامة والهوية
+              والمحتوى وتجربة الموقع.
             </p>
           </motion.div>
 
